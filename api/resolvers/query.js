@@ -1,15 +1,14 @@
 module.exports = {
-  users: async (parent, args, { user, dataSources }, info) => {
-    const users = await dataSources.userDataSource.getUsers();
-    return users;
+  users: async (parent, args, { dataSources }, info) => {
+    return await dataSources.userDataSource.getUsers();
   },
   userById: async (parent, { id }, { dataSources }, info) => {
-    const user = await dataSources.userDataSource.getUserById(id);
-    return user;
+    return await dataSources.userDataSource.getUserById(id);
   },
-  me: async (parent, { id }, { dataSources, user }, info) => {
+
+  me: async (parent, args, { dataSources, user }, info) => {
     if (user) {
-      return dataSources.userDataSource.getUserById(user.id);
+      return await dataSources.userDataSource.getUserById(user.id);
     }
     return undefined;
   },

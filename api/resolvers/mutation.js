@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const createToken = (userInfo) =>
   JWT.sign(
-    { sub: userInfo.id, email: userInfo.email, role: userInfo.role },
+    { id: userInfo.id, email: userInfo.email, role: userInfo.role },
     process.env.SECRET
   );
 
@@ -76,17 +76,6 @@ module.exports = {
         email: existingUser.email,
         role: existingUser.role,
       },
-    };
-  },
-  userInfo: async (parent, args, { dataSources, user }, info) => {
-    if (user) {
-      return {
-        user: { id: user.sub, email: user.email, role: user.role },
-      };
-    }
-
-    return {
-      user: undefined,
     };
   },
   signOut: async (parent, args, { dataSources, res }, info) => {

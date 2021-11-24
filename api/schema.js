@@ -9,8 +9,8 @@ module.exports = gql`
     USER
   }
 
-  type Query { #@rateLimit(limit: 5, duration: 10) {
-    userById(id: ID): User
+  type Query @rateLimit(limit: 5, duration: 10) {
+    userById(id: ID): User @isAdmin
     users: [User] @isAdmin
     me: User
   }
@@ -33,7 +33,6 @@ module.exports = gql`
   type Mutation {
     signUp(credentials: Credentials!): AuthPayload
     signIn(credentials: Credentials!): AuthPayload
-    userInfo: AuthPayload
     signOut: AuthPayload
   }
 `;

@@ -29,11 +29,11 @@ app.use(cookieParser());
 
 const keyGenerator = (directiveArgs, obj, args, context, info) =>
   context.user
-    ? `${context.user.sub}`
+    ? `${context.user.id}`
     : defaultKeyGenerator(directiveArgs, obj, args, context, info);
 
 const server = new ApolloServer({
-  typeDefs, //: [createRateLimitTypeDef(), typeDefs],
+  typeDefs: [createRateLimitTypeDef(), typeDefs],
   resolvers,
   dataSources,
   schemaDirectives: {
@@ -46,7 +46,7 @@ const server = new ApolloServer({
     depthLimit(3),
     createComplexityLimitRule(600, {
       onCost: (cost) => {
-        console.log("query cost:", cost);
+        // console.log("query cost:", cost);
       },
     }),
   ],
