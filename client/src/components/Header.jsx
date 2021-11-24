@@ -2,8 +2,10 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import { AuthLink } from "./AuthLink";
+import { AuthContext } from "../context/AuthProvider";
 
 export function Header() {
+  const { isAdmin } = React.useContext(AuthContext);
   return (
     <header>
       <div className="container">
@@ -12,7 +14,15 @@ export function Header() {
             <span className="text">GraphQL With Unit Tests</span>
           </Link>
         </div>
-        <div className="col-md-5 col-xs-12"></div>
+        <div className="col-md-5 col-xs-12">
+          {isAdmin && (
+            <div className="sign">
+              <Link className="nav-link" to="/admin">
+                Admin
+              </Link>
+            </div>
+          )}
+        </div>
         <div className="sign-in col-md-2">
           <div className="sign">
             <AuthLink to="/auth/sign-in">Sign-in</AuthLink>

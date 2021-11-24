@@ -7,7 +7,8 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { ApolloProvider } from "./context/ApolloProvider";
 import { AuthProvider } from "./context/AuthProvider";
-import { useAppInit } from "./useAppInit";
+import { useAppInit } from "./hooks/useAppInit";
+import Admin from "./pages/admin/Admin";
 
 function AppRouter() {
   const { loading } = useAppInit();
@@ -19,6 +20,7 @@ function AppRouter() {
           <p>Loading...</p>
         ) : (
           <Routes>
+            <Route path="admin" element={<Admin />} />
             <Route path="auth/*" element={<Auth />} />
             <Route path="/" element={<Home />} />
           </Routes>
