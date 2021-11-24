@@ -15,6 +15,7 @@ const signInMutation = gql`
       user {
         id
         email
+        role
       }
     }
   }

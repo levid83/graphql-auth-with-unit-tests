@@ -15,6 +15,7 @@ const signUpMutation = gql`
       user {
         id
         email
+        role
       }
     }
   }
