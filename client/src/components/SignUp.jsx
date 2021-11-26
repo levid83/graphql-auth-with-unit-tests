@@ -9,7 +9,7 @@ import { useContext } from "react";
 import Layout from "./Layout";
 import Form from "./Form";
 
-const signUpMutation = gql`
+export const signUpMutation = gql`
   mutation signUpUser($email: String!, $password: String!) {
     signUp(credentials: { email: $email, password: $password }) {
       user {
@@ -37,7 +37,6 @@ function SignUp() {
       authContext.setAuthInfo({ userData: signUp.user });
       navigate("/");
     } catch (error) {
-      console.log("error", error);
       setError(error.message);
     }
   };

@@ -14,6 +14,7 @@ const AuthForm = ({ onSubmit, children }) => {
           name="email"
           type="email"
           id="inputEmail"
+          data-testid="email"
           className="form-control"
           required
           autoFocus
@@ -28,13 +29,18 @@ const AuthForm = ({ onSubmit, children }) => {
           name="password"
           type="password"
           id="inputPassword"
+          data-testid="password"
           className="form-control"
           required
           {...register("password")}
         />
         {errors.password && <p>{errors.password}</p>}
       </div>
-      <button className="btn btn-lg btn-primary btn-block" type="submit">
+      <button
+        className="btn btn-lg btn-primary btn-block"
+        type="submit"
+        data-testid="submit"
+      >
         {children}
       </button>
     </form>

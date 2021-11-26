@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -9,7 +9,7 @@ import { useContext } from "react";
 import Layout from "./Layout";
 import Form from "./Form";
 
-const signInMutation = gql`
+export const signInMutation = gql`
   mutation signInUser($email: String!, $password: String!) {
     signIn(credentials: { email: $email, password: $password }) {
       user {
@@ -33,10 +33,10 @@ function SignIn() {
       const {
         data: { signIn },
       } = await signInUser({ variables: values });
+
       authContext.setAuthInfo({ userData: signIn.user });
       navigate("/");
     } catch (error) {
-      console.log("error", error);
       setError(error.message);
     }
   };

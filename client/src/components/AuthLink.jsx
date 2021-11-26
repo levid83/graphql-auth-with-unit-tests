@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import { gql, useMutation } from "@apollo/client";
 
-const signOutMutation = gql`
+export const signOutMutation = gql`
   mutation signOutUser {
     signOut {
       user {
@@ -14,8 +14,10 @@ const signOutMutation = gql`
   }
 `;
 
-export const AuthLink = ({ children }) => {
-  const [signOutUser] = useMutation(signOutMutation);
+export const AuthLink = ({ children, to }) => {
+  const [signOutUser, { error }] = useMutation(signOutMutation, {
+    onError: () => {},
+  });
   const { isAuthenticated, setAuthInfo } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -27,9 +29,9 @@ export const AuthLink = ({ children }) => {
 
   return isAuthenticated ? (
     <Link onClick={handleSignOut} to="#">
-      Sign Out
+      {error ? "Click again to signout" : "Sign Out"}
     </Link>
   ) : (
-    <Link to="/auth/sign-in">{children}</Link>
+    <Link to={to}>{children}</Link>
   );
 };
