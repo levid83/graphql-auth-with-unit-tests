@@ -4,17 +4,16 @@ const lodashId = require("lodash-id");
 const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
 
-const adapter = new FileSync("./data/users.json");
-const db = low(adapter);
-db._.mixin(lodashId);
-
 class UserDataSource extends DataSource {
-  constructor() {
+  constructor(file) {
     super();
+    const adapter = new FileSync(file);
+    this.adapter = low(adapter);
+    this.adapter._.mixin(lodashId);
   }
 
-  initialize(config) {
-    this.db = db.get("users");
+  initialize({}) {
+    this.db = this.adapter.get("users");
   }
 
   getUsers() {

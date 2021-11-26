@@ -46,6 +46,7 @@ module.exports = {
       user: {
         id: dbUser.id,
         email: dbUser.email,
+        role: dbUser.role,
       },
     };
   },
@@ -78,7 +79,7 @@ module.exports = {
       },
     };
   },
-  signOut: async (parent, args, { dataSources, res }, info) => {
+  signOut: (parent, args, { dataSources, res }, info) => {
     res.clearCookie("token");
     return {
       user: undefined,

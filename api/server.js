@@ -22,7 +22,7 @@ const resolvers = require("./resolvers/index");
 const app = express();
 
 const dataSources = () => ({
-  userDataSource: new UserDataSource(),
+  userDataSource: new UserDataSource("./data/users.json"),
 });
 
 app.use(cookieParser());

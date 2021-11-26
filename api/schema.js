@@ -10,7 +10,7 @@ module.exports = gql`
   }
 
   type Query @rateLimit(limit: 5, duration: 10) {
-    userById(id: ID): User @isAdmin
+    userById(id: String!): User @isAdmin
     users: [User] @isAdmin
     me: User
   }

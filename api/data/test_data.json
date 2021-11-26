@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@domain.com",
+      "hash": "$2a$10$Fqov1tVnWETnEfsg7zm6aezOx4Y1v3k1Cdc7LJA/APz7CCLNO7Akq",
+      "role": "ADMIN"
+    },
+    {
+      "id": "2",
+      "email": "user1@test.com",
+      "hash": "$2a$10$Fqov1tVnWETnEfsg7zm6aezOx4Y1v3k1Cdc7LJA/APz7CCLNO7Akq",
+      "role": "USER"
+    },
+    {
+      "id": "3",
+      "email": "user2@test.com",
+      "hash": "$2a$10$Fqov1tVnWETnEfsg7zm6aezOx4Y1v3k1Cdc7LJA/APz7CCLNO7Akq",
+      "role": "ADMIN"
+    }
+  ]
+}

@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll",
     "start": "nodemon index.js --ignore 'data'"
   },
   "author": "",
@@ -26,5 +26,10 @@
     "lodash-id": "^0.14.0",
     "lowdb": "^1.0.0",
     "nodemon": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "apollo-server-testing": "^2.25.3",
+    "jest": "^27.3.1"
   }
 }
